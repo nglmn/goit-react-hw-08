@@ -1,5 +1,3 @@
-// import initData from "../db.json";
-
 export const INITIAL_STATE = {
     contacts: {
         items: [],
@@ -8,5 +6,12 @@ export const INITIAL_STATE = {
     },
     filters: {
         name: ""
-    }
+    },
+    user: {
+        name: null,
+        email: null,
+    },
+    token: null,
+    isLoggedIn: false,
+    isRefreshing: false,
 }
