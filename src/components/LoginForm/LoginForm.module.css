@@ -1,0 +1,45 @@
+.form {
+    margin: 100px auto;
+    display: flex;
+    gap: 30px;
+    flex-direction: row;
+    width: 600px;
+    height: 400px;
+    padding: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.093);
+    border-radius: 8px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.074);
+}
+
+.formPic {
+    width: 400px;
+    height: 100%;
+    background: url("../../img/pexels-tima-miroshnichenko-6474345.jpg");
+    border-radius: 4px;
+    object-fit: contain;
+    background-size: 300px;
+}
+
+.title {
+    font-size: 25px;
+    text-align: center;
+    color: rgb(49, 49, 49);
+    font-weight: 300;
+}
+
+.input {
+    position: relative;
+    width: 100%;
+}
+
+.inputWrapper {
+    margin: 20px 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+}
+
+.noValid {
+    color: red;
+}

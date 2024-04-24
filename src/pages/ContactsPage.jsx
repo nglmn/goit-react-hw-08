@@ -4,9 +4,10 @@ import ContactForm from "../components/ContactForm/ContactForm";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchAllContacts } from "../../redux/contactsOps";
-import { selectLoading, selectFilteredUsers } from "../../redux/selectors";
-import Spinner from "../Spinner/Spinner";
+import { fetchAllContacts } from "../redux/contacts/contactsOps";
+import { selectLoading } from "../redux/contacts/contactsSelectors";
+import { selectFilteredUsers } from "../redux/filters/filtersSelectors"
+import Spinner from "../components/Spinner/Spinner";
 
 const ContactsPage = () => {
     const dispatch = useDispatch();

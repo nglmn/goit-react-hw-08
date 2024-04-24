@@ -11,7 +11,4 @@ export const INITIAL_STATE = {
         name: null,
         email: null,
     },
-    token: null,
-    isLoggedIn: false,
-    isRefreshing: false,
 }

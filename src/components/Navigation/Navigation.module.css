@@ -2,12 +2,13 @@
     width: 900px;
     backdrop-filter: blur(7px);
     border-radius: 50px;
-    background: linear-gradient(rgba(0, 0, 0, 0.106), rgba(255, 255, 255, 0.059));
-    border: 1px solid rgb(245, 245, 245, 0.1);
+    background: linear-gradient(rgba(0, 0, 0, 0.062), rgba(255, 255, 255, 0.059));
+    border: 0.5px solid rgb(245, 245, 245, 0.1);
 }
 .navMenu {
     padding: 15px;
     font-size: larger;
+    font-weight: 100;
     display: flex;
     flex-direction: row;
     justify-content: space-around;

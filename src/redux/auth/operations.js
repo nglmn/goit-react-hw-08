@@ -1,11 +1,24 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const signupUser = createAsyncThunk("auth/register",
-    async (_, thunkApi) => {
+const instance = axios.create({
+    baseURL: "https://connections-api.herokuapp.com"
+});
+
+export const setToken = (token) => {
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+}
+export const clearToken = () => {
+    instance.defaults.headers.common.Authorization = "";
+}
+
+export const signUpUser = createAsyncThunk("auth/register",
+    async (formData, thunkApi) => {
         try {
-            const response = await axios.post(`https://connections-api.herokuapp.com/users/signup`);
-            return response.data;
+            const response = await instance.post("/users/signup", formData);
+            setToken(response.data.token);
+            console.log(response.data);//{user: {name: "carl", email: "carl@mail.com"}, token: 'eyJhbGciOiJIU'}
+            return response;
         } catch (error) {
             return thunkApi.rejectWithValue(error.message);
         }
@@ -13,32 +26,12 @@ export const signupUser = createAsyncThunk("auth/register",
 )
 
 export const loginUser = createAsyncThunk("auth/login",
-    async (_, thunkApi) => {
+    async (formData, thunkApi) => {
         try {
-            const response = await axios.post(`https://connections-api.herokuapp.com/users/login`);
-            return response.data;
-        } catch (error) {
-            return thunkApi.rejectWithValue(error.message);
-        }
-    }
-)
-
-export const logoutUser = createAsyncThunk("auth/logout",
-    async (_, thunkApi) => {
-        try {
-            const response = await axios.post(`https://connections-api.herokuapp.com/users/logout`);
-            return response.data;
-        } catch (error) {
-            return thunkApi.rejectWithValue(error.message);
-        }
-    }
-)
-
-export const getUserInfo = createAsyncThunk("auth/current",
-    async (_, thunkApi) => {
-        try {
-            const response = await axios.post(`https://connections-api.herokuapp.com/users/current`);
-            return response.data;
+            const response = await instance.post("/users/login", formData);
+            setToken(response.data.token);
+            console.log(response.data);//{user: {name: "carl", email: "carl@mail.com"}, token: 'eyJhbGciOiJIU'}
+            return response;
         } catch (error) {
             return thunkApi.rejectWithValue(error.message);
         }

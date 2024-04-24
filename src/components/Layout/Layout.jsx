@@ -1,6 +1,15 @@
-const Layout = () => {
+import Navigation from "../Navigation/Navigation";
+
+const Layout = ({ children }) => {
     return (
-        <div>Layout</div>
+        <>
+            <header>
+                <Navigation />
+            </header>
+            <main>
+                {children}
+            </main>
+        </>
     )
 }
 

@@ -1,10 +1,10 @@
 import * as yup from 'yup';
 import { Field, Form, Formik, ErrorMessage } from "formik";
-import { useId } from "react";
+import { TextField, Button } from '@mui/material';
 import { nanoid } from "nanoid";
 import './ContactForm.css';
 import { useDispatch } from 'react-redux';
-import { addNewContact } from '../../redux/contactsOps';
+import { addNewContact } from '../../redux/contacts/contactsOps';
 
 const initialValues = {
     id: "",
@@ -20,8 +20,6 @@ const FeedbackSchema = yup.object().shape({
 
 
 const ContactForm = () => {
-    const userNameId = useId();
-    const userNumberId = useId();
     const dispatch = useDispatch();
 
     const onSubmitForm = (values, actions) => {
@@ -39,16 +37,14 @@ const ContactForm = () => {
         <Formik initialValues={initialValues} onSubmit={onSubmitForm} validationSchema={FeedbackSchema}>
             <Form className="form">
                 <div className="form-field">
-                    <label htmlFor={userNameId}>Name:</label>
-                    <Field name="name" className="input-field" id={userNameId} type="text" placeholder="John Rocha"></Field>
+                    <Field as={TextField} name="name" className="input-field" type="text" label="Name"></Field>
                     <ErrorMessage name="name" as="span" />
                 </div>
                 <div className="form-field">
-                    <label htmlFor={userNumberId}>Number:</label>
-                    <Field name="number" className="input-field" id={userNumberId} type="text" placeholder="000-00-00"></Field>
+                    <Field as={TextField} name="number" className="input-field" type="text" placeholder="000-00-00" label="Number"></Field>
                     <ErrorMessage name="number" as="span" />
                 </div>
-                <button type="submit" className="form-btn">Add contact</button>
+                <Button type="submit" className="form-btn" variant="contained">Add contact</Button>
             </Form>
         </Formik>
     )

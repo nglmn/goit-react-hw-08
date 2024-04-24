@@ -2,7 +2,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { HiPhone } from "react-icons/hi2";
 import './Contact.css';
 import { useDispatch } from "react-redux";
-import { deleteContactById } from "../../redux/contactsOps";
+import { deleteContactById } from "../../redux/contacts/contactsOps";
 
 
 const Contact = ({ userProps: { name, number }, id }) => {
