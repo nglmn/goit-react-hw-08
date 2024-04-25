@@ -18,6 +18,7 @@ const FeedbackSchema = Yup.object().shape({
 const LoginForm = () => {
     const dispatch = useDispatch();
     const handleSubmit = (values, actions) => {
+        console.log(values);
         dispatch(loginUser(values));
         actions.resetForm();
     }

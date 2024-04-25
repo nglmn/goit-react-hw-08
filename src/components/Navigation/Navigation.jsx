@@ -12,7 +12,7 @@ const Navigation = () => {
 
                 <NavLink to="/contacts">Contacts</NavLink>
             </div>
-        </nav >
+        </nav>
     )
 }
 
