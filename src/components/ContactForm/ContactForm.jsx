@@ -4,7 +4,7 @@ import { TextField, Button } from '@mui/material';
 import { nanoid } from "nanoid";
 import './ContactForm.css';
 import { useDispatch } from 'react-redux';
-import { addNewContact } from '../../redux/contacts/options';
+import { addNewContact } from '../../redux/contacts/operations';
 
 const initialValues = {
     id: "",

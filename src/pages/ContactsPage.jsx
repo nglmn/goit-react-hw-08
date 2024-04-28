@@ -5,7 +5,7 @@ import ContactForm from "../components/ContactForm/ContactForm";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Helmet } from "react-helmet-async";
-import { fetchAllContacts } from "../redux/contacts/options";
+import { fetchAllContacts } from "../redux/contacts/operations.js";
 import { selectLoading } from "../redux/contacts/selectors";
 import { selectFilteredUsers } from "../redux/filters/selectors.js";
 import Spinner from "../components/Spinner/Spinner";
