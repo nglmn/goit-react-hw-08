@@ -1,5 +1,6 @@
 .form {
-    margin: 100px auto;
+    margin: 50px auto;
+    background-color: #fff;
     display: flex;
     gap: 30px;
     flex-direction: row;
@@ -12,14 +13,14 @@
 }
 
 .formPic {
-    width: 400px;
+    width: 300px;
     height: 100%;
-    background: url("../../img/pexels-tima-miroshnichenko-6474345.jpg");
+    background-color: rgb(201, 0, 17);
     border-radius: 4px;
-    object-fit: contain;
-    background-size: 300px;
 }
-
+.imageLog {
+    margin: 50px auto;
+}
 .title {
     font-size: 25px;
     text-align: center;
@@ -42,4 +43,9 @@
 
 .noValid {
     color: red;
+}
+.noaccMessage{
+    font-size: 14px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.235);
 }

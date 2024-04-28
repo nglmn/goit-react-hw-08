@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { loginUser, signUpUser } from "../auth/operations";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { logOutUser, loginUser, refreshUser, signUpUser } from "../auth/operations";
 
 const INITIAL_STATE = {
     token: null,
@@ -14,26 +14,13 @@ const authSlice = createSlice({
     initialState: INITIAL_STATE,
     extraReducers: (builder) => builder
         //register
-        .addCase(signUpUser.pending, (state) => {
-            state.isLoading = true;
-            state.isError = false;
-        })
         .addCase(signUpUser.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isLoggedIn = true;
             state.userData = action.payload.user; //{name: 'aaaaaaaa', email: 'aaaaa@asdas.aaaa'}
-            console.log(state.userData);
             state.token = action.payload.token;
         })
-        .addCase(signUpUser.rejected, (state) => {
-            state.isLoading = false;
-            state.isError = true;
-        })
         //login
-        .addCase(loginUser.pending, (state) => {
-            state.isLoading = true;
-            state.isError = false;
-        })
         .addCase(loginUser.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isLoggedIn = true;
@@ -41,7 +28,24 @@ const authSlice = createSlice({
             console.log(state);
             state.token = action.payload.token;
         })
-        .addCase(loginUser.rejected, (state) => {
+        //refresh
+        .addCase(refreshUser.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.isLoggedIn = true;
+            state.userData = action.payload;
+        })
+        //logout
+        .addCase(logOutUser.fulfilled, () => {
+            return INITIAL_STATE;
+        })
+
+
+
+        .addMatcher(isAnyOf(signUpUser.pending, loginUser.pending, refreshUser.pending, logOutUser.pending), (state) => {
+            state.isLoading = true;
+            state.isError = false;
+        })
+        .addMatcher(isAnyOf(signUpUser.rejected, loginUser.rejected, refreshUser.rejected, logOutUser.rejected), (state) => {
             state.isLoading = false;
             state.isError = true;
         })

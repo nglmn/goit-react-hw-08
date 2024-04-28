@@ -2,12 +2,15 @@ import ContactList from "../components/ContactList/ContactList";
 import SearchBox from "../components/SearchBox/SearchBox";
 import ContactForm from "../components/ContactForm/ContactForm";
 
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchAllContacts } from "../redux/contacts/contactsOps";
+import { useDispatch, useSelector } from "react-redux";
+import { Helmet } from "react-helmet-async";
+import { fetchAllContacts } from "../redux/contacts/contactsOptions";
 import { selectLoading } from "../redux/contacts/contactsSelectors";
-import { selectFilteredUsers } from "../redux/filters/filtersSelectors"
+import { selectFilteredUsers } from "../redux/filters/selectors.js";
 import Spinner from "../components/Spinner/Spinner";
+
+import "../../src/css/style.css";
 
 const ContactsPage = () => {
     const dispatch = useDispatch();
@@ -18,17 +21,24 @@ const ContactsPage = () => {
     }, [dispatch])
 
     //фільтрація йде тільки коли в полі пошуку введені данні, коли воно пусте, то показуються усі користувачі
-    const visibleUsers = useSelector(selectFilteredUsers);
+    const filteredUsers = useSelector(selectFilteredUsers);
+
+
     return (
-        <div className="phonebook">
-            <h1>Phonebook</h1>
-            <div className="app-interface">
-                <div className="form-panel">
-                    <ContactForm />
-                    <SearchBox />
+        <div className="container">
+            <Helmet>
+                <title>Phonebook</title>
+            </Helmet>
+            <div className="phonebook">
+                <h1 className="titleContacts">Phonebook</h1>
+                <div className="app-interface">
+                    <div className="form-panel">
+                        <ContactForm />
+                        <SearchBox />
+                    </div>
+                    <ContactList users={filteredUsers} />
+                    {isLoading && <Spinner />}
                 </div>
-                {isLoading && <Spinner />}
-                <ContactList users={visibleUsers} />
             </div>
         </div>
     )

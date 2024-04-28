@@ -9,7 +9,7 @@ const Spinner = () => {
                 height="75"
                 width="75"
                 color='grey'
-                strokeColor="white"
+                strokeColor="grey"
                 strokeWidth="2"
                 animationDuration="0.75"
                 ariaLabel="rotating-lines-loading"

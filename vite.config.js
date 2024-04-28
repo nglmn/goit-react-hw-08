@@ -9,5 +9,8 @@ export default defineConfig({
   },
   optimizeDeps: {
     exclude: ['js-big-decimal']
-  }
+  },
+  rewrites: [
+    { "source": "/(.*)", "destination": "/" }
+  ]
 })

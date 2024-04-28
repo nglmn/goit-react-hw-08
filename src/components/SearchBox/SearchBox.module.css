@@ -1,0 +1,11 @@
+.searchBar{
+    width: 300px;
+        padding: 25px;
+        border: 1px solid rgba(9, 9, 9, 0.068);
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.161);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        background-color: aliceblue;
+}
