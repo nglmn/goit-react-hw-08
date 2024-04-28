@@ -3,7 +3,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import CallIcon from '@mui/icons-material/Call';
 import css from './Contact.module.css';
 import { useDispatch } from "react-redux";
-import { deleteContactById } from "../../redux/contacts/contactsOptions";
+import { deleteContactById } from "../../redux/contacts/options";
 
 
 
